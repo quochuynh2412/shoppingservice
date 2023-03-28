@@ -28,11 +28,26 @@ public class App {
             System.out.println("6/ Display cart amount");
             System.out.println("7/ Display all shopping carts");
             System.out.println("8/ Exit");
-            switch (util.getIntInput()) {
+            switch (util.getIntInput(1, 9)) {
                 case 1: {
+                    System.out.println(
+                            "\n\n\n\n\n-------------------------------------");
                     for (Product product : ProductRepository.getProductsMap().values()) {
-                        System.out.println(product.getAllDetails());
+                        System.out.println("\t" + product.getName());
+                        System.out.print("Type: ");
+                        if (product instanceof PhysicalProduct) {
+                            System.out.println("Physical");
+                            System.out.println("Weight: " + ((PhysicalProduct) product).getWeight());
+                        } else {
+                            System.out.println("Digital");
+                        }
+                        System.out.println("Description: " + product.getDescription());
+                        System.out.println("Price: " + product.getPrice());
+                        System.out.println("Available quantity: " + product.getQuantityAvailable());
+                        System.out.println(
+                                "-------------------------------------\n");
                     }
+                    break;
                 }
                 case 2: {
                     System.out.print("-------------------------------------");
@@ -79,6 +94,16 @@ public class App {
                         }
                     }
                     System.out.println("Successfully created a new product:");
+                    break;
+                }
+                case 3: {
+                    System.out.println("Product list: ");
+                    int i = 1;
+                    for (Product product : ProductRepository.getProductsMap().values()) {
+                        System.out.println(String.valueOf(i) + "/ " + product.toString());
+                        i++;
+                    }
+                    System.out.println("Please choose a product to edit");
                     break;
                 }
                 case 8: {

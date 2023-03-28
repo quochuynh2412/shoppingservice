@@ -33,6 +33,27 @@ public class AppUtility {
         return inputInt;
     }
 
+    public int getIntInput(int i1, int i2) {
+        boolean done = false;
+        int inputInt = 0;
+        while (!done) {
+            try {
+                Scanner scanner = new Scanner(System.in);
+                System.out.print(">>> ");
+                inputInt = scanner.nextInt();
+                if ((inputInt < 0) || !(i1 <= inputInt && inputInt < i2)) {
+                    System.out.println("Invalid value entered. Must be a non-negative integer in range ("
+                            + String.valueOf(i1) + "," + String.valueOf(i2) + "). Please try again.");
+                } else {
+                    done = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid value entered. Must be a non-negative integer. Please try again.");
+            }
+        }
+        return inputInt;
+    }
+
     public double getDoubleInput() {
         boolean done = false;
         double inputDouble = 0;

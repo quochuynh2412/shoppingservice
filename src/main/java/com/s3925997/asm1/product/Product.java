@@ -57,8 +57,4 @@ public abstract class Product {
         this.msg = msg;
     }
 
-    public String getAllDetails() {
-        return null;
-    };
-
 }

@@ -20,15 +20,6 @@ public class PhysicalProduct extends Product {
         this.weight = weight;
     }
 
-    public String getAllDetails() {
-        String productDetail = "Name: " + this.getName() +
-                "\n\tType: Physical\n\tDescription: " + this.getDescription() +
-                "\n\tAvailable quantity: " + this.getQuantityAvailable() +
-                "\n\tPrice: " + this.getPrice() +
-                "\n\tWeight: " + this.getWeight();
-        return productDetail;
-    }
-
     @Override
     public String toString() {
         return "PHYSICAL - " + this.getName();

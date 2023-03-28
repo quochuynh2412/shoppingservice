@@ -8,16 +8,8 @@ public class DigitalProduct extends Product {
         super(name, description, quantityAvailable, price);
     }
 
-    public String getAllDetails() {
-        String productDetail = "Name: " + this.getName() +
-                "\n\tType: Digital\n\tDescription: " + this.getDescription() +
-                "\n\tAvailable quantity: " + this.getQuantityAvailable() +
-                "\n\tPrice: " + this.getPrice();
-        return productDetail;
-    }
-
     @Override
     public String toString() {
-        return "PHYSICAL - " + this.getName();
+        return "DIGITAL - " + this.getName();
     }
 }
