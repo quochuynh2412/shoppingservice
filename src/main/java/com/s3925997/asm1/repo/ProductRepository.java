@@ -3,12 +3,11 @@ package com.s3925997.asm1.repo;
 import com.s3925997.asm1.product.*;
 import java.util.*;;
 
-public class ProductRepository {
-    public static Map<String, Product> products;
-
-    public void ProductRepository() {
-        this.products = new HashMap<>();
-    }
+/**
+ * @author <Le Trinh Quoc Huynh - s3925997>
+ */
+public final class ProductRepository {
+    public static Map<String, Product> products = new HashMap<String, Product>();
 
     public static Product searchProduct(String productName) {
         for (Product product : products.values()) {
@@ -17,6 +16,10 @@ public class ProductRepository {
             }
         }
         return null;
+    }
+
+    public static Map<String, Product> getProductsMap() {
+        return products;
     }
 
     public static void addProduct(Product product) {

@@ -1,22 +1,21 @@
 package com.s3925997.asm1.repo;
 
 import java.util.*;
-
 import com.s3925997.asm1.cart.ShoppingCart;
 
-public class ShoppingCartRepo {
-    private ArrayList<ShoppingCart> repo;
+/**
+ * @author <Le Trinh Quoc Huynh - s3925997>
+ */
+public final class ShoppingCartRepo {
+    private static ArrayList<ShoppingCart> repo;
 
-    public ShoppingCartRepo() {
-    }
-
-    public boolean createNewCart() {
+    public static boolean createNewCart() {
         ShoppingCart shoppingCart = new ShoppingCart();
         repo.add(shoppingCart);
         return true;
     }
 
-    public void displayAllCart() {
+    public static void displayAllCart() {
 
     }
 }

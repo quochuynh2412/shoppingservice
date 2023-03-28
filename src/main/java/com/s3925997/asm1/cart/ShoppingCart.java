@@ -1,12 +1,12 @@
 package com.s3925997.asm1.cart;
 
 import java.util.Set;
+import com.s3925997.asm1.product.*;
+import com.s3925997.asm1.repo.*;
 
-import com.s3925997.asm1.product.PhysicalProduct;
-import com.s3925997.asm1.product.Product;
-import com.s3925997.asm1.repo.ProductRepository;
-import com.s3925997.asm1.repo.ShoppingCartRepo;
-
+/**
+ * @author <Le Trinh Quoc Huynh - s3925997>
+ */
 public class ShoppingCart implements Comparable<ShoppingCart> {
     private Set<String> products;
     private double shippingBaseFee = 0.1;
@@ -26,7 +26,6 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
     }
 
     public boolean removeItem(String productName) {
-        Product product = ProductRepository.searchProduct(productName);
         if (products.contains(productName)) {
             return false;
         } else {
@@ -74,16 +73,15 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
         return compareInt;
     }
 
-    public static void main(String[] args) {
-        PhysicalProduct p1 = new PhysicalProduct();
-        p1.setName("iphone");
-        ProductRepository.addProduct(p1);
-        PhysicalProduct p2 = new PhysicalProduct();
-        p2.setName("xiami");
-        ProductRepository.addProduct(p2);
-        for (String string : ProductRepository.products.keySet()) {
-            System.out.println(string);
-        }
-    }
-
+    // public static void main(String[] args) {
+    // PhysicalProduct p1 = new PhysicalProduct();
+    // p1.setName("iphone");
+    // ProductRepository.addProduct(p1);
+    // PhysicalProduct p2 = new PhysicalProduct();
+    // p2.setName("xiaomi");
+    // ProductRepository.addProduct(p2);
+    // for (String string : ProductRepository.products.keySet()) {
+    // System.out.println(string);
+    // }
+    // }
 }
