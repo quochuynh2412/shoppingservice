@@ -1,5 +1,6 @@
 package com.s3925997.asm1.cart;
 
+import java.util.HashSet;
 import java.util.Set;
 import com.s3925997.asm1.product.*;
 import com.s3925997.asm1.repo.*;
@@ -8,17 +9,36 @@ import com.s3925997.asm1.repo.*;
  * @author <Le Trinh Quoc Huynh - s3925997>
  */
 public class ShoppingCart implements Comparable<ShoppingCart> {
+    private String cartId;
     private Set<String> products;
-    private double shippingBaseFee = 0.1;
+    private static final double shippingBaseFee = 0.1;
+
+    public ShoppingCart(String cartId) {
+        this.cartId = cartId;
+        this.products = new HashSet<String>();
+    }
+
+    public String getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(String cartId) {
+        this.cartId = cartId;
+    }
+
+    public Set<String> getProducts() {
+        return products;
+    }
 
     public boolean addItem(String productName) {
         Product product = ProductRepository.searchProduct(productName);
         if (product.getQuantityAvailable() == 0) {
             return false;
         } else {
-            if (products.contains(productName)) {
+            if (products.contains(productName.trim())) {
                 return false;
             } else {
+                products.add(productName);
                 ProductRepository.decreaseQuantity(productName);
                 return true;
             }
@@ -26,9 +46,10 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
     }
 
     public boolean removeItem(String productName) {
-        if (products.contains(productName)) {
+        if (products.contains(productName.trim())) {
             return false;
         } else {
+            products.remove(productName);
             ProductRepository.increaseQuantity(productName);
             return true;
         }
@@ -42,7 +63,7 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
                 amount += ((PhysicalProduct) product).getPrice();
                 amount += ((PhysicalProduct) product).getWeight() * shippingBaseFee;
             } else {
-                amount += ((PhysicalProduct) product).getPrice();
+                amount += ((DigitalProduct) product).getPrice();
             }
         }
         return amount;
@@ -73,15 +94,4 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
         return compareInt;
     }
 
-    // public static void main(String[] args) {
-    // PhysicalProduct p1 = new PhysicalProduct();
-    // p1.setName("iphone");
-    // ProductRepository.addProduct(p1);
-    // PhysicalProduct p2 = new PhysicalProduct();
-    // p2.setName("xiaomi");
-    // ProductRepository.addProduct(p2);
-    // for (String string : ProductRepository.products.keySet()) {
-    // System.out.println(string);
-    // }
-    // }
 }

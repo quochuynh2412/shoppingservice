@@ -1,13 +1,13 @@
 package com.s3925997.asm1.repo;
 
 import com.s3925997.asm1.product.*;
-import java.util.*;;
+import java.util.*;
 
 /**
  * @author <Le Trinh Quoc Huynh - s3925997>
  */
 public final class ProductRepository {
-    public static Map<String, Product> products = new HashMap<String, Product>();
+    public static LinkedHashMap<String, Product> products = new LinkedHashMap<String, Product>();
 
     public static Product searchProduct(String productName) {
         for (Product product : products.values()) {
@@ -16,6 +16,12 @@ public final class ProductRepository {
             }
         }
         return null;
+    }
+
+    public static Product searchByIndex(int i) {
+        Product[] productsArr = new Product[products.size()];
+        productsArr = products.values().toArray(productsArr);
+        return productsArr[i];
     }
 
     public static Map<String, Product> getProductsMap() {
