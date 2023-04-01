@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.s3925997.asm1.cart.ShoppingCartTest" time="0.001" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.s3925997.asm1.cart.ShoppingCartTest" time="0.004" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="GB"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/quochuynh2412/Documents/2023A_Further Programming/ASM1/shoppingservice/target/surefire/surefirebooter7062984620619847037.jar /Users/quochuynh2412/Documents/2023A_Further Programming/ASM1/shoppingservice/target/surefire 2023-04-02T01-03-28_430-jvmRun1 surefire14870449011379080510tmp surefire_0926210841367056267tmp"/>
+    <property name="sun.java.command" value="/Users/quochuynh2412/Documents/2023A_Further Programming/ASM1/shoppingservice/target/surefire/surefirebooter9882049043225331996.jar /Users/quochuynh2412/Documents/2023A_Further Programming/ASM1/shoppingservice/target/surefire 2023-04-02T01-32-16_560-jvmRun1 surefire2508773932025719032tmp surefire_03317789768813009097tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/quochuynh2412/Documents/2023A_Further Programming/ASM1/shoppingservice/target/test-classes:/Users/quochuynh2412/Documents/2023A_Further Programming/ASM1/shoppingservice/target/classes:/Users/quochuynh2412/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/quochuynh2412/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/quochuynh2412/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/quochuynh2412/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/quochuynh2412/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/quochuynh2412/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/quochuynh2412/Documents/2023A_Further Programming/ASM1/shoppingservice/target/surefire/surefirebooter7062984620619847037.jar"/>
+    <property name="surefire.real.class.path" value="/Users/quochuynh2412/Documents/2023A_Further Programming/ASM1/shoppingservice/target/surefire/surefirebooter9882049043225331996.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="19.0.2"/>
@@ -61,7 +61,7 @@
   <testcase name="testExistedAddItem" classname="com.s3925997.asm1.cart.ShoppingCartTest" time="0"/>
   <testcase name="testAddNonExistedItem" classname="com.s3925997.asm1.cart.ShoppingCartTest" time="0"/>
   <testcase name="testCartAmountWithoutPhysicalProduct" classname="com.s3925997.asm1.cart.ShoppingCartTest" time="0"/>
-  <testcase name="testTotalWeightWithoutPhysicalProduct" classname="com.s3925997.asm1.cart.ShoppingCartTest" time="0"/>
+  <testcase name="testTotalWeightWithoutPhysicalProduct" classname="com.s3925997.asm1.cart.ShoppingCartTest" time="0.001"/>
   <testcase name="testTotalWeightWithPhysicalProduct" classname="com.s3925997.asm1.cart.ShoppingCartTest" time="0"/>
   <testcase name="testRemoveExistedItem" classname="com.s3925997.asm1.cart.ShoppingCartTest" time="0"/>
   <testcase name="testCartAmountWithPhysicalProduct" classname="com.s3925997.asm1.cart.ShoppingCartTest" time="0"/>

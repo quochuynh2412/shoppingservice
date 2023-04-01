@@ -50,6 +50,6 @@ public final class ProductRepository {
     }
 
     public static void resetRepo() {
-        products = new LinkedHashMap<String, Product>();
+        products.clear();
     }
 }

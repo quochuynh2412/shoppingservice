@@ -17,8 +17,11 @@ public final class ShoppingCartRepo {
         return repo;
     }
 
+    public static void addCart(ShoppingCart shoppingCart) {
+        repo.add(shoppingCart);
+    }
+
     public static boolean createNewCart() {
-        String cartId = String.valueOf(repo.size() - 1);
         ShoppingCart shoppingCart = new ShoppingCart();
         repo.add(shoppingCart);
         return true;
@@ -31,10 +34,11 @@ public final class ShoppingCartRepo {
         return added;
     }
 
-    public static void displayAllCart() {
-    }
-
     public static void sortCarts() {
         Collections.sort(repo);
+    }
+
+    public static void resetRepo() {
+        repo.clear();
     }
 }

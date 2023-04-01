@@ -7,7 +7,6 @@ import com.s3925997.asm1.product.*;
 public class ProductRepoTest {
     @BeforeEach
     void setUp() {
-
         PhysicalProduct p1 = new PhysicalProduct("Samsung", "new", 23, 1599.9, 0.9);
         PhysicalProduct p2 = new PhysicalProduct("Huawei", "new", 24, 599.9, 1.2);
         DigitalProduct p3 = new DigitalProduct("Rich dad, poor dad", "Book", 150, 25.4);
@@ -123,6 +122,12 @@ public class ProductRepoTest {
     public void increaseQuantityDigitalProduct() {
         ProductRepository.increaseQuantity("Rich dad, poor dad");
         assertEquals(151, ProductRepository.searchProduct("Rich dad, poor dad").getQuantityAvailable());
+    }
+
+    @Test
+    public void testResetRepo() {
+        ProductRepository.resetRepo();
+        assertEquals(0, ProductRepository.getProductsMap().size());
     }
 
     @AfterEach
