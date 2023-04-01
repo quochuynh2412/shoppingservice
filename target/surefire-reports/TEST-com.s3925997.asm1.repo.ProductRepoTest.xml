@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.s3925997.asm1.AppTest" time="0.012" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.s3925997.asm1.repo.ProductRepoTest" time="0.006" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -58,5 +58,16 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.s3925997.asm1.AppTest" time="0.009"/>
+  <testcase name="testAddExistedPhysicalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
+  <testcase name="decreaseQuantityDigitalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
+  <testcase name="testSearchByIndexDigitalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
+  <testcase name="decreaseQuantityPhysicalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
+  <testcase name="testSearchDigitalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
+  <testcase name="testAddNonExistedPhysicalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
+  <testcase name="testSearchByIndexPhysicalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0.001"/>
+  <testcase name="testAddExistedDigitalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
+  <testcase name="testSearchPhysicalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0.001"/>
+  <testcase name="increaseQuantityDigitalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
+  <testcase name="increaseQuantityPhysicalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
+  <testcase name="testAddNonExistedDigitalProduct" classname="com.s3925997.asm1.repo.ProductRepoTest" time="0"/>
 </testsuite>

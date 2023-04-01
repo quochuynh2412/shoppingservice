@@ -13,8 +13,7 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
     private Set<String> products;
     private static final double shippingBaseFee = 0.1;
 
-    public ShoppingCart(String cartId) {
-        this.cartId = cartId;
+    public ShoppingCart() {
         this.products = new HashSet<String>();
     }
 
@@ -46,7 +45,7 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
     }
 
     public boolean removeItem(String productName) {
-        if (products.contains(productName.trim())) {
+        if (!products.contains(productName.trim())) {
             return false;
         } else {
             products.remove(productName);

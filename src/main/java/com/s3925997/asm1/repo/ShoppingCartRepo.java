@@ -9,13 +9,17 @@ import com.s3925997.asm1.cart.ShoppingCart;
 public final class ShoppingCartRepo {
     private static ArrayList<ShoppingCart> repo = new ArrayList<ShoppingCart>();
 
+    public static ShoppingCart getCart(int index) {
+        return repo.get(index);
+    }
+
     public static ArrayList<ShoppingCart> getRepo() {
         return repo;
     }
 
     public static boolean createNewCart() {
         String cartId = String.valueOf(repo.size() - 1);
-        ShoppingCart shoppingCart = new ShoppingCart(cartId);
+        ShoppingCart shoppingCart = new ShoppingCart();
         repo.add(shoppingCart);
         return true;
     }

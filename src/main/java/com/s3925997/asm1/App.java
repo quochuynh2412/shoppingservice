@@ -4,15 +4,27 @@ import java.util.*;
 
 import com.s3925997.asm1.product.*;
 import com.s3925997.asm1.repo.*;
-import com.s3925997.asm1.util.*;
 
 /**
  * @author <Le Trinh Quoc Huynh - s3925997>
  */
 public class App {
     public static void main(String[] args) {
+        PhysicalProduct p1 = new PhysicalProduct("iPhone", "new", 23, 1599.99, 0.9);
+        PhysicalProduct p2 = new PhysicalProduct("Xiaomi", "new", 24, 599.99, 1.2);
+        DigitalProduct p3 = new DigitalProduct("Harry Potter 2", "HP and the ...", 150, 25.4);
+        ProductRepository.addProduct(p3);
+        ProductRepository.addProduct(p2);
+        ProductRepository.addProduct(p1);
+        ShoppingCartRepo.createNewCart();
+        ShoppingCartRepo.addProductToCart(0, p1.getName());
+        ShoppingCartRepo.addProductToCart(0, p2.getName());
+        ShoppingCartRepo.addProductToCart(0, p3.getName());
+        ShoppingCartRepo.createNewCart();
+        ShoppingCartRepo.addProductToCart(1, p1.getName());
+        ShoppingCartRepo.addProductToCart(1, p3.getName());
+        ShoppingCartRepo.sortCarts();
         Scanner scanner = new Scanner(System.in);
-        String inputString = "";
         boolean exit = false;
         while (!exit) {
             System.out.println("-------------------------------------");
@@ -23,9 +35,9 @@ public class App {
             System.out.println("2/ Create a product");
             System.out.println("3/ Edit product");
             System.out.println("4/ Create new shopping cart");
-            System.out.println("5/ Display cart amount");
-            System.out.println("6/ Display all shopping carts");
-            System.out.println("7/ Exit");
+            System.out.println("5/ Display all shopping carts");
+            System.out.println("6/ Exit");
+            System.out.print(">>> ");
             switch (Integer.parseInt(scanner.nextLine())) {
                 case 1: {
                     System.out.println(
@@ -43,7 +55,28 @@ public class App {
                         System.out.println("Price: " + product.getPrice());
                         System.out.println("Available quantity: " + product.getQuantityAvailable());
                         System.out.println(
-                                "-------------------------------------\n");
+                                "-------------------------------------");
+                    }
+                    System.out.println("Do you want to:\n1/ Add product to cart\n2/ Back to menu");
+                    System.out.print(">>> ");
+                    switch (Integer.parseInt(scanner.nextLine())) {
+                        case 1: {
+                            System.out.println("Product name:");
+                            System.out.print(">>> ");
+                            String productName = scanner.nextLine().trim();
+                            System.out.println("Cart list: ");
+                            System.out.print(">>> ");
+                            for (int i = 0; i < ShoppingCartRepo.getRepo().size(); i++) {
+                                System.out.printf("%d/ Cart %d:\n\tWeight: %6.2f\n\tTotal Amount: $%6.2f\n", i + 1,
+                                        i + 1,
+                                        ShoppingCartRepo.getRepo().get(i).getTotalWeight(),
+                                        ShoppingCartRepo.getRepo().get(i).cartAmount());
+                            }
+                            System.out.println("Select a cart to add product to: ");
+                            System.out.print(">>> ");
+                            int cartIndex = Integer.parseInt(scanner.nextLine()) - 1;
+                            ShoppingCartRepo.addProductToCart(cartIndex, productName);
+                        }
                     }
                     break;
                 }
@@ -60,14 +93,19 @@ public class App {
                     switch (Integer.parseInt(scanner.nextLine())) {
                         case 1: {
                             System.out.println("Enter product name: ");
+                            System.out.print(">>> ");
                             name = scanner.nextLine().trim();
                             System.out.println("Enter product description: ");
+                            System.out.print(">>> ");
                             description = scanner.nextLine().trim();
                             System.out.println("Enter product price: ");
+                            System.out.print(">>> ");
                             price = Double.parseDouble(scanner.nextLine());
                             System.out.println("Enter product available quantity: ");
+                            System.out.print(">>> ");
                             quantityAvailable = Integer.parseInt(scanner.nextLine());
                             System.out.println("Enter product weight: ");
+                            System.out.print(">>> ");
                             weight = Double.parseDouble(scanner.nextLine());
                             PhysicalProduct product = new PhysicalProduct(name, description, quantityAvailable, price,
                                     weight);
@@ -76,12 +114,16 @@ public class App {
                         }
                         case 2: {
                             System.out.println("Enter product name: ");
+                            System.out.print(">>> ");
                             name = scanner.nextLine().trim();
                             System.out.println("Enter product description: ");
+                            System.out.print(">>> ");
                             description = scanner.nextLine().trim();
                             System.out.println("Enter product price: ");
+                            System.out.print(">>> ");
                             price = Double.parseDouble(scanner.nextLine());
                             System.out.println("Enter product available quantity: ");
+                            System.out.print(">>> ");
                             quantityAvailable = Integer.parseInt(scanner.nextLine());
                             DigitalProduct product = new DigitalProduct(name, description, quantityAvailable, price);
                             ProductRepository.addProduct(product);
@@ -99,6 +141,7 @@ public class App {
                         i++;
                     }
                     System.out.println("Please choose a product to edit");
+                    System.out.print(">>> ");
                     int editProductInt = Integer.parseInt(scanner.nextLine());
                     Product product = ProductRepository.searchByIndex(editProductInt - 1);
                     System.out.println("\t" + product.getName());
@@ -112,7 +155,39 @@ public class App {
                     System.out.println("Description: " + product.getDescription());
                     System.out.println("Price: " + product.getPrice());
                     System.out.println("Available quantity: " + product.getQuantityAvailable());
-                    System.out.println("What do you want to edit: \n1/Name\t2/");
+                    if (product instanceof PhysicalProduct) {
+                        System.out.println(
+                                "What do you want to edit: \n1/ Description \t3/ Available Quantity \n2/ Price \t4/ Weight");
+                    } else {
+                        System.out.println(
+                                "What do you want to edit: \n1/ Description \t3/ Available Quantity \n2/ Price");
+                    }
+                    switch (Integer.parseInt(scanner.nextLine())) {
+                        case 1: {
+                            System.out.print("Enter new value: \n>>> ");
+                            product.setDescription(scanner.nextLine().trim());
+                            ProductRepository.addProduct(product);
+                            break;
+                        }
+                        case 2: {
+                            System.out.print("Enter new value: \n>>> ");
+                            product.setPrice(Double.parseDouble(scanner.nextLine()));
+                            ProductRepository.addProduct(product);
+                            break;
+                        }
+                        case 3: {
+                            System.out.print("Enter new value: \n>>> ");
+                            product.setQuantityAvailable(Integer.parseInt(scanner.nextLine()));
+                            ProductRepository.addProduct(product);
+                            break;
+                        }
+                        case 4: {
+                            System.out.print("Enter new value: \n>>> ");
+                            ((PhysicalProduct) product).setWeight(Double.parseDouble(scanner.nextLine()));
+                            ProductRepository.addProduct(product);
+                            break;
+                        }
+                    }
                     break;
                 }
                 case 4: {
@@ -121,20 +196,6 @@ public class App {
                     break;
                 }
                 case 5: {
-                    PhysicalProduct p1 = new PhysicalProduct("iPhone", "new", 23, 1599.99, 0.9);
-                    PhysicalProduct p2 = new PhysicalProduct("Xiaomi", "new", 24, 599.99, 1.2);
-                    DigitalProduct p3 = new DigitalProduct("Harry Potter 2", "HP and the ...", 150, 25.4);
-                    ProductRepository.addProduct(p3);
-                    ProductRepository.addProduct(p2);
-                    ProductRepository.addProduct(p1);
-                    ShoppingCartRepo.createNewCart();
-                    ShoppingCartRepo.addProductToCart(0, p1.getName());
-                    ShoppingCartRepo.addProductToCart(0, p2.getName());
-                    ShoppingCartRepo.addProductToCart(0, p3.getName());
-                    ShoppingCartRepo.createNewCart();
-                    ShoppingCartRepo.addProductToCart(1, p1.getName());
-                    ShoppingCartRepo.addProductToCart(1, p3.getName());
-                    ShoppingCartRepo.sortCarts();
                     for (int i = 0; i < ShoppingCartRepo.getRepo().size(); i++) {
                         System.out.printf("%d/ Cart %d:\n\tWeight: %6.2f\n\tTotal Amount: $%6.2f\n", i + 1, i + 1,
                                 ShoppingCartRepo.getRepo().get(i).getTotalWeight(),
@@ -143,9 +204,6 @@ public class App {
                     break;
                 }
                 case 6: {
-
-                }
-                case 7: {
                     exit = true;
                     break;
                 }

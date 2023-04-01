@@ -28,8 +28,13 @@ public final class ProductRepository {
         return products;
     }
 
-    public static void addProduct(Product product) {
-        products.put(product.getName(), product);
+    public static boolean addProduct(Product product) {
+        if (!products.keySet().contains(product.getName())) {
+            products.put(product.getName(), product);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static void decreaseQuantity(String productName) {
@@ -44,4 +49,7 @@ public final class ProductRepository {
         products.replace(productName, product);
     }
 
+    public static void resetRepo() {
+        products = new LinkedHashMap<String, Product>();
+    }
 }
